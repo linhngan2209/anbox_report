@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Menu } from 'lucide-react';
-import  { OrdersPage } from './pages/Orders';
+import { OrdersPage } from './pages/Orders';
 import { UsersPage } from './pages/Customers';
+import { FeedbackPage } from './pages/Feedback';
 import { Sidebar } from './components/SlideBar';
 
 export default function App() {
@@ -9,7 +10,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('orders');
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="min-h-screen flex bg-gray-100">
       <Sidebar
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
@@ -25,13 +26,19 @@ export default function App() {
           >
             <Menu className="w-6 h-6" />
           </button>
-          <h2 className="text-lg font-semibold text-gray-800">
-            {currentPage === 'orders' ? 'Đơn hàng' : 'Người dùng'}
+          <h2 className="text-lg font-semibold text-gray-800 capitalize">
+            {currentPage === 'orders'
+              ? 'Đơn hàng'
+              : currentPage === 'users'
+              ? 'Người dùng'
+              : 'Phản hồi'}
           </h2>
         </header>
 
         <main className="flex-1 p-6 lg:p-8">
-          {currentPage === 'orders' ? <OrdersPage /> : <UsersPage />}
+          {currentPage === 'orders' && <OrdersPage />}
+          {currentPage === 'users' && <UsersPage />}
+          {currentPage === 'feedback' && <FeedbackPage />}
         </main>
       </div>
     </div>

@@ -66,7 +66,6 @@ export function OrdersPage() {
         </div>
       </div>
 
-      {/* --- Table --- */}
       <div className="bg-white rounded-xl shadow-md overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
